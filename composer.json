@@ -1,0 +1,19 @@
+{
+  "name": "bpstr/editorjs-renderer-php",
+  "license": "MIT",
+  "description": "Simple parser and renderer backend for Editor.js",
+  "autoload": {
+    "psr-4": {"Bpstr\\EditorJs\\": "src/"}
+  },
+  "require": {
+    "php": "^7.2",
+    "ext-json": "*",
+    "bpstr/elements-php": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "suggest": {
+    "codex-team/editor.js": "Decode and validate blocks based on editor config."
+  }
+}
