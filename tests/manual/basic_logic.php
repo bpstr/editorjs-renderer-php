@@ -8,19 +8,21 @@ use Bpstr\EditorJs\EditorJsRenderer;
 require_once '../../vendor/autoload.php';
 
 $blocks = [
-	['type' => 'heading', 'data' => ['text' => 'Dolor sit amet.']],
+	['type' => 'header', 'data' => ['text' => 'Dolor sit amet.']],
 	['type' => 'paragraph', 'data' => ['text' => 'Lorem ipsum']]
 ];
 
-$parser = new EditorJsRenderer($blocks);
+$renderer = EditorJsRenderer::withMapping($blocks);
 
-$parser->map('heading', new HeaderBlock());
-$parser->map('paragraph', new ParagraphBlock());
+$renderer = new EditorJsRenderer($blocks);
 
-$parser->default = new PlainText();
+$renderer->map('header', new HeaderBlock());
+$renderer->map('paragraph', new ParagraphBlock());
 
-$parser->insert(['type' => 'heading', 'data' => ['text' => 'This __ rocks!']]);
+$renderer->default = new PlainText();
 
-echo $parser->render();
+$renderer->insert(['type' => 'header', 'data' => ['text' => 'This __ rocks!']]);
 
-echo $parser;
+echo $renderer->render();
+
+echo $renderer;
